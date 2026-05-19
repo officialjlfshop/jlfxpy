@@ -1,0 +1,30 @@
+# _headers - Fix MIME types on Render
+/css/*
+  Content-Type: text/css
+
+/js/*
+  Content-Type: application/javascript
+
+/*.css
+  Content-Type: text/css
+
+/*.js
+  Content-Type: application/javascript
+
+/*.json
+  Content-Type: application/json
+
+/*.ico
+  Content-Type: image/x-icon
+
+/*.png
+  Content-Type: image/png
+
+/*.jpg
+  Content-Type: image/jpeg
+
+/*.svg
+  Content-Type: image/svg+xml
+
+/manifest.json
+  Content-Type: application/json

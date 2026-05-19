@@ -1,0 +1,7 @@
+# .htaccess
+AddType text/css .css
+AddType application/javascript .js
+AddType application/json .json
+AddType image/png .png
+AddType image/jpeg .jpg
+AddType image/x-icon .ico
