@@ -2,12 +2,33 @@
    JLF FIREWORKS - MAIN STYLESHEET
    ======================================== */
 
-/* Import all modules */
+/* Core */
 @import url('base.css');
-@import url('components.css');
 @import url('layout.css');
-@import url('pages.css');
-@import url('modal.css');
+@import url('components.css');
 @import url('toast.css');
+
+/* Pages */
+@import url('pages/home.css');
+@import url('pages/shop.css');
+@import url('pages/featured.css');
+@import url('pages/orders.css');
+@import url('pages/help.css');
+@import url('pages/recharge.css');
+@import url('pages/withdraw.css');
+@import url('pages/account.css');
+
+/* Components */
+@import url('components/modal.css');
+@import url('components/cart.css');
+@import url('components/forms.css');
+@import url('components/product-card.css');
+
+/* Admin */
+@import url('admin/admin.css');
+@import url('admin/dashboard.css');
+@import url('admin/tables.css');
+
+/* Utilities */
 @import url('responsive.css');
 @import url('animations.css');

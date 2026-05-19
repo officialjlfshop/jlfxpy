@@ -1,0 +1,95 @@
+/* ========================================
+   WITHDRAW PAGE STYLES
+   ======================================== */
+
+/* Limits Card */
+.limits-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 20px;
+    margin-bottom: 30px;
+}
+
+.limits-card h3 {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 16px;
+    font-size: 1rem;
+}
+
+.limits-card ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.limits-card li {
+    padding: 6px 0;
+    font-size: 0.85rem;
+    color: var(--text-light);
+}
+
+.limits-card li strong {
+    color: var(--primary);
+}
+
+/* Withdraw Form */
+.withdraw-form {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 24px;
+}
+
+.withdraw-form h3 {
+    margin-bottom: 20px;
+    font-size: 1.1rem;
+}
+
+/* Phone Input Wrapper */
+.phone-input-wrapper {
+    display: flex;
+    align-items: center;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.country-code {
+    background: var(--background);
+    padding: 12px;
+    border-right: 1px solid var(--border);
+    font-weight: 500;
+}
+
+.phone-input-wrapper input {
+    flex: 1;
+    border: none;
+    padding: 12px;
+    outline: none;
+}
+
+/* Password Wrapper */
+.password-wrapper {
+    display: flex;
+    align-items: center;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.password-wrapper input {
+    flex: 1;
+    border: none;
+    padding: 12px;
+    outline: none;
+}
+
+.toggle-password {
+    background: none;
+    border: none;
+    padding: 0 12px;
+    cursor: pointer;
+    color: var(--text-light);
+}

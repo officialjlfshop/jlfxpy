@@ -1,0 +1,187 @@
+/* ========================================
+   FEATURED PAGE STYLES (Rewards & Investments)
+   ======================================== */
+
+/* Redemption Card */
+.redemption-card {
+    background: var(--card);
+    border-radius: 24px;
+    padding: 30px;
+    margin-bottom: 30px;
+    border: 1px solid var(--border);
+}
+
+.card-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.card-header i {
+    font-size: 1.5rem;
+    color: var(--primary);
+}
+
+.card-header h2 {
+    font-size: 1.3rem;
+}
+
+.redemption-form .input-group {
+    display: flex;
+    gap: 12px;
+}
+
+.redemption-form input {
+    flex: 1;
+    padding: 12px 16px;
+    border: 1px solid var(--border);
+    border-radius: 40px;
+    font-size: 1rem;
+}
+
+.code-message {
+    margin-top: 12px;
+    font-size: 0.85rem;
+}
+
+.code-message.success {
+    color: var(--success);
+}
+
+.code-message.error {
+    color: var(--error);
+}
+
+/* Investment Calculator */
+.investment-calculator-card {
+    background: var(--card);
+    border-radius: 24px;
+    padding: 30px;
+    margin-bottom: 30px;
+    border: 1px solid var(--border);
+}
+
+.calculator-form .form-group {
+    margin-bottom: 20px;
+}
+
+.calculator-form label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+
+.calculator-form input,
+.calculator-form select {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    font-size: 1rem;
+}
+
+.calculator-result {
+    background: var(--background);
+    padding: 20px;
+    border-radius: 16px;
+    margin: 20px 0;
+}
+
+.result-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+}
+
+.result-row .text-primary {
+    color: var(--primary);
+}
+
+/* Investments Section */
+.investments-section {
+    background: var(--card);
+    border-radius: 24px;
+    padding: 30px;
+    margin-bottom: 30px;
+    border: 1px solid var(--border);
+}
+
+.investment-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px;
+    border-bottom: 1px solid var(--border);
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.investment-item:last-child {
+    border-bottom: none;
+}
+
+.investment-info {
+    flex: 1;
+}
+
+.investment-type {
+    font-weight: 600;
+    color: var(--primary);
+    margin-bottom: 4px;
+}
+
+.investment-amount,
+.investment-return,
+.investment-date {
+    font-size: 0.8rem;
+    color: var(--text-light);
+}
+
+.investment-status {
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.investment-status.active {
+    background: #e8f5e9;
+    color: #4caf50;
+}
+
+.investment-status.completed {
+    background: #e3f2fd;
+    color: #2196f3;
+}
+
+/* Safety Banner */
+.safety-banner {
+    background: linear-gradient(135deg, #fff3e0, #ffe0b2);
+    border-radius: 20px;
+    padding: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.safety-banner i {
+    font-size: 2rem;
+    color: #ff9800;
+}
+
+.safety-text {
+    flex: 1;
+}
+
+.safety-text h3 {
+    font-size: 1rem;
+    margin-bottom: 4px;
+}
+
+.safety-text p {
+    font-size: 0.85rem;
+    color: #666;
+}

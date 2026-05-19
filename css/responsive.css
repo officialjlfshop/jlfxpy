@@ -1,0 +1,161 @@
+/* ========================================
+   RESPONSIVE STYLES
+   ======================================== */
+
+/* Tablet */
+@media (max-width: 768px) {
+    .container {
+        padding: 0 16px;
+    }
+    
+    h1 {
+        font-size: 1.8rem;
+    }
+    
+    h2 {
+        font-size: 1.5rem;
+    }
+    
+    /* Hero */
+    .hero-content h1 {
+        font-size: 2rem;
+    }
+    
+    .hero-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    /* Features */
+    .features-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    /* Products */
+    .products-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+    }
+    
+    /* Filters */
+    .filters-bar {
+        flex-direction: column;
+    }
+    
+    .category-filters {
+        justify-content: center;
+    }
+    
+    /* Steps */
+    .steps-grid {
+        flex-direction: column;
+    }
+    
+    .step-arrow {
+        transform: rotate(90deg);
+    }
+    
+    /* Stats */
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    /* Reviews */
+    .reviews-container {
+        grid-template-columns: 1fr;
+    }
+    
+    /* Cart */
+    .cart-drawer {
+        width: 100%;
+    }
+    
+    /* Admin */
+    .admin-sidebar {
+        transform: translateX(-100%);
+        transition: transform 0.3s;
+    }
+    
+    .admin-sidebar.active {
+        transform: translateX(0);
+    }
+    
+    .admin-main {
+        margin-left: 0;
+    }
+    
+    /* Tables */
+    .data-table {
+        overflow-x: auto;
+    }
+    
+    .data-table table {
+        min-width: 600px;
+    }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+    .products-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .modal-container {
+        width: 95%;
+    }
+    
+    .filter-chip {
+        padding: 6px 12px;
+        font-size: 0.75rem;
+    }
+    
+    .toast {
+        min-width: auto;
+        width: calc(100vw - 32px);
+    }
+    
+    .investment-item {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .safety-banner {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+
+/* Dark Mode Support */
+body.dark {
+    --background: #1c1c1e;
+    --card: #2c2c2e;
+    --border: #3a3a3c;
+    --text: #f5f5f7;
+    --text-light: #a1a1a6;
+}
+
+body.dark .feature-card,
+body.dark .product-card,
+body.dark .review-card,
+body.dark .step-card,
+body.dark .redemption-card,
+body.dark .investment-calculator-card,
+body.dark .investments-section {
+    background: var(--card);
+    border-color: var(--border);
+}
+
+body.dark .search-box,
+body.dark .filter-chip,
+body.dark .sort-select select {
+    background: #3a3a3c;
+    color: white;
+}
+
+body.dark .calculator-result {
+    background: #3a3a3c;
+}

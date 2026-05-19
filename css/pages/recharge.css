@@ -1,0 +1,294 @@
+/* ========================================
+   RECHARGE PAGE STYLES
+   ======================================== */
+
+/* Back Button */
+.back-btn {
+    background: none;
+    border: none;
+    color: var(--text);
+    font-size: 1rem;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 20px;
+    padding: 8px 0;
+}
+
+.back-btn:hover {
+    color: var(--primary);
+}
+
+/* Balance Card */
+.balance-card {
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    color: white;
+    border-radius: 24px;
+    padding: 30px;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.balance-label {
+    font-size: 0.9rem;
+    opacity: 0.9;
+    margin-bottom: 8px;
+}
+
+.balance-amount {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.balance-hint {
+    font-size: 0.75rem;
+    opacity: 0.8;
+}
+
+/* Method Tabs */
+.method-tabs {
+    display: flex;
+    gap: 0;
+    margin-bottom: 30px;
+    border-bottom: 1px solid var(--border);
+}
+
+.method-tab {
+    flex: 1;
+    background: none;
+    border: none;
+    padding: 12px 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    color: var(--text-light);
+    transition: all 0.2s;
+    position: relative;
+}
+
+.method-tab.active {
+    color: var(--primary);
+}
+
+.method-tab.active::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--primary);
+}
+
+.method-content {
+    display: none;
+}
+
+.method-content.active {
+    display: block;
+}
+
+/* QR Code Section */
+.qr-code-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+}
+
+.qr-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 24px;
+    text-align: center;
+}
+
+.qr-image {
+    width: 200px;
+    height: 200px;
+    margin: 0 auto 16px;
+    border-radius: 16px;
+}
+
+.gcash-number {
+    font-size: 1.1rem;
+    margin-bottom: 8px;
+}
+
+.copy-btn {
+    background: none;
+    border: none;
+    color: var(--primary);
+    cursor: pointer;
+    margin-left: 8px;
+}
+
+.gcash-name {
+    color: var(--text-light);
+    font-size: 0.8rem;
+}
+
+/* Recharge Form */
+.recharge-form {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 24px;
+}
+
+.recharge-form h3 {
+    margin-bottom: 20px;
+    font-size: 1.1rem;
+}
+
+.amount-suggestions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 12px;
+}
+
+.suggestion-btn {
+    background: var(--background);
+    border: 1px solid var(--border);
+    padding: 6px 12px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 0.8rem;
+    transition: all 0.2s;
+}
+
+.suggestion-btn:hover {
+    background: var(--primary);
+    color: white;
+    border-color: var(--primary);
+}
+
+.readonly-input {
+    background: var(--background);
+    cursor: not-allowed;
+}
+
+.field-hint {
+    font-size: 0.7rem;
+    color: var(--text-light);
+    display: block;
+    margin-top: 4px;
+}
+
+/* File Upload */
+.file-upload-area {
+    border: 2px dashed var(--border);
+    border-radius: 16px;
+    padding: 30px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.file-upload-area:hover {
+    border-color: var(--primary);
+    background: var(--background);
+}
+
+.file-upload-area i {
+    font-size: 2rem;
+    color: var(--text-light);
+    margin-bottom: 8px;
+}
+
+.file-name {
+    display: block;
+    font-size: 0.7rem;
+    color: var(--primary);
+    margin-top: 8px;
+}
+
+/* Cash Card */
+.cash-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.cash-info {
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    color: white;
+    padding: 30px;
+    text-align: center;
+}
+
+.cash-info i {
+    font-size: 2.5rem;
+    margin-bottom: 16px;
+}
+
+.cash-info h3 {
+    margin-bottom: 16px;
+}
+
+.store-hours,
+.store-phone {
+    margin-top: 12px;
+    font-size: 0.9rem;
+}
+
+/* Info Box */
+.info-box {
+    background: var(--background);
+    border-left: 4px solid var(--info);
+    padding: 16px;
+    border-radius: 12px;
+    margin: 20px 0;
+    display: flex;
+    gap: 12px;
+}
+
+.info-box i {
+    color: var(--info);
+    font-size: 1.2rem;
+}
+
+.info-box p {
+    flex: 1;
+    font-size: 0.85rem;
+}
+
+.info-box.warning {
+    border-left-color: var(--warning);
+    background: rgba(255, 152, 0, 0.1);
+}
+
+.info-box.warning i {
+    color: var(--warning);
+}
+
+.info-box.success {
+    border-left-color: var(--success);
+    background: rgba(76, 175, 80, 0.1);
+}
+
+.info-box.success i {
+    color: var(--success);
+}
+
+/* History Link */
+.history-link {
+    text-align: center;
+    margin-top: 30px;
+    padding: 20px;
+}
+
+.history-link a {
+    color: var(--primary);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.history-link a:hover {
+    text-decoration: underline;
+}
