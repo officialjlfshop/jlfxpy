@@ -6,7 +6,7 @@
     <title>JLF Fireworks</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
     <header class="header">
@@ -46,19 +46,30 @@
 
     <div id="toastContainer" class="toast-container"></div>
 
-    <!-- Load scripts in CORRECT ORDER -->
-    <script src="js/config.js"></script>
-    <script src="js/helpers.js"></script>
-    <script src="js/state.js"></script>
-    <script src="js/data/products.js"></script>
-    <script src="js/pages/home.js"></script>
-    <script src="js/pages/shop.js"></script>
-    <script src="js/pages/featured.js"></script>
-    <script src="js/pages/orders.js"></script>
-    <script src="js/pages/help.js"></script>
-    <script src="js/pages/recharge.js"></script>
-    <script src="js/pages/withdraw.js"></script>
-    <script src="js/pages/account.js"></script>
-    <script src="js/app.js"></script>
+    <!-- USE RELATIVE PATHS FOR ALL SCRIPTS -->
+    <script src="/js/config.js"></script>
+    <script src="/js/helpers.js"></script>
+    <script src="/js/state.js"></script>
+    <script src="/js/data/products.js"></script>
+    <script src="/js/pages/home.js"></script>
+    <script src="/js/pages/shop.js"></script>
+    <script src="/js/pages/featured.js"></script>
+    <script src="/js/pages/orders.js"></script>
+    <script src="/js/pages/help.js"></script>
+    <script src="/js/pages/recharge.js"></script>
+    <script src="/js/pages/withdraw.js"></script>
+    <script src="/js/pages/account.js"></script>
+    <script src="/js/ui/hamburger.js"></script>
+    <script src="/js/ui/toast.js"></script>
+    <script src="/js/ui/skeleton.js"></script>
+    <script src="/js/ui/autocomplete.js"></script>
+    <script src="/js/ui/balance-visibility.js"></script>
+    <script src="/js/auth/session.js"></script>
+    <script src="/js/auth/pin.js"></script>
+    <script src="/js/auth/two-factor.js"></script>
+    <script src="/js/shop/quick-view.js"></script>
+    <script src="/js/reviews/reviews.js"></script>
+    <script src="/js/app.js"></script>
+
 </body>
 </html>
