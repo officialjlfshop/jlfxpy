@@ -1,0 +1,31 @@
+# render.yaml - JLF Fireworks Blueprint Configuration
+
+services:
+  # Frontend Static Site
+  - type: web
+    name: jlf-fireworks
+    runtime: static
+    staticPublishPath: ./
+    headers:
+      - path: /*
+        name: Cache-Control
+        value: public, max-age=3600
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html
+
+  # Backend API Server  
+  - type: web
+    name: jlf-fireworks-api
+    runtime: node
+    plan: free
+    buildCommand: npm install
+    startCommand: node api/server.js
+    envVars:
+      - key: GOOGLE_SHEETS_URL
+        sync: false
+      - key: ADMIN_PHONE
+        sync: false
+      - key: ADMIN_PASSWORD
+        sync: false
