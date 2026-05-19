@@ -1,0 +1,349 @@
+/* ========================================
+   COMPONENTS - Buttons, Cards, Skeleton
+   ======================================== */
+
+/* Buttons */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-sm);
+    padding: var(--space-sm) var(--space-lg);
+    border-radius: var(--radius-full);
+    font-weight: 600;
+    font-size: var(--font-sm);
+    transition: var(--transition-fast);
+    cursor: pointer;
+    border: none;
+    font-family: inherit;
+}
+
+.btn-primary {
+    background: var(--primary);
+    color: white;
+}
+
+.btn-primary:hover {
+    background: var(--primary-dark);
+    transform: translateY(-1px);
+}
+
+.btn-secondary {
+    background: var(--secondary);
+    color: white;
+}
+
+.btn-secondary:hover {
+    background: var(--secondary-light);
+}
+
+.btn-outline {
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--text);
+}
+
+.btn-outline:hover {
+    border-color: var(--primary);
+    color: var(--primary);
+}
+
+.btn-large {
+    padding: var(--space-md) var(--space-xl);
+    font-size: var(--font-base);
+}
+
+.btn-small {
+    padding: var(--space-xs) var(--space-md);
+    font-size: var(--font-xs);
+}
+
+.btn-block {
+    width: 100%;
+    justify-content: center;
+}
+
+.btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* Cards */
+.card {
+    background: var(--card);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border);
+    overflow: hidden;
+    transition: var(--transition-normal);
+}
+
+.card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+}
+
+.card-body {
+    padding: var(--space-md);
+}
+
+/* Product Card */
+.product-card {
+    background: var(--card);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    transition: var(--transition-normal);
+    cursor: pointer;
+    position: relative;
+}
+
+.product-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+}
+
+.product-image {
+    position: relative;
+    aspect-ratio: 1;
+    overflow: hidden;
+    background: var(--background);
+}
+
+.product-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: var(--transition-normal);
+}
+
+.product-card:hover .product-image img {
+    transform: scale(1.05);
+}
+
+.product-badge {
+    position: absolute;
+    top: var(--space-sm);
+    left: var(--space-sm);
+    padding: var(--space-xs) var(--space-sm);
+    border-radius: var(--radius-full);
+    font-size: var(--font-xs);
+    font-weight: 600;
+    z-index: 1;
+}
+
+.product-badge.sale {
+    background: var(--error);
+    color: white;
+}
+
+.product-badge.new {
+    background: var(--success);
+    color: white;
+}
+
+.product-badge.low-stock {
+    background: var(--warning);
+    color: white;
+}
+
+.product-info {
+    padding: var(--space-md);
+}
+
+.product-title {
+    font-size: var(--font-base);
+    font-weight: 600;
+    margin-bottom: var(--space-xs);
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+    box-orient: vertical;
+    overflow: hidden;
+}
+
+.product-category {
+    font-size: var(--font-xs);
+    color: var(--text-light);
+    margin-bottom: var(--space-sm);
+}
+
+.product-price {
+    display: flex;
+    align-items: baseline;
+    gap: var(--space-sm);
+    margin-bottom: var(--space-md);
+}
+
+.current-price {
+    font-size: var(--font-lg);
+    font-weight: 700;
+    color: var(--primary);
+}
+
+.original-price {
+    font-size: var(--font-sm);
+    color: var(--text-light);
+    text-decoration: line-through;
+}
+
+.product-stock {
+    font-size: var(--font-xs);
+    margin-bottom: var(--space-md);
+}
+
+.stock-in {
+    color: var(--success);
+}
+
+.stock-low {
+    color: var(--warning);
+}
+
+.stock-out {
+    color: var(--error);
+}
+
+.product-actions {
+    display: flex;
+    gap: var(--space-sm);
+}
+
+/* Skeleton Loaders */
+.skeleton {
+    background: linear-gradient(90deg, var(--border) 25%, var(--background) 50%, var(--border) 75%);
+    background-size: 200% 100%;
+    animation: skeleton-loading 1.5s infinite;
+    border-radius: var(--radius-sm);
+}
+
+@keyframes skeleton-loading {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+}
+
+.skeleton-product {
+    background: var(--card);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+}
+
+.skeleton-image {
+    aspect-ratio: 1;
+    background: var(--border);
+}
+
+.skeleton-text {
+    height: 16px;
+    background: var(--border);
+    border-radius: var(--radius-sm);
+    margin: var(--space-sm) 0;
+}
+
+.skeleton-title {
+    width: 70%;
+    height: 20px;
+}
+
+.skeleton-price {
+    width: 40%;
+    height: 24px;
+}
+
+.skeleton-button {
+    width: 100%;
+    height: 40px;
+    border-radius: var(--radius-full);
+}
+
+/* Grid Layouts */
+.grid-2 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-md);
+}
+
+.grid-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-md);
+}
+
+.grid-4 {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-md);
+}
+
+/* Status Badges */
+.status-badge {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: var(--radius-full);
+    font-size: var(--font-xs);
+    font-weight: 600;
+}
+
+.status-pending {
+    background: #fff3e0;
+    color: #ff9800;
+}
+
+.status-approved {
+    background: #e3f2fd;
+    color: #2196f3;
+}
+
+.status-completed {
+    background: #e8f5e9;
+    color: #4caf50;
+}
+
+.status-cancelled {
+    background: #ffebee;
+    color: #f44336;
+}
+
+.status-active {
+    background: #e8f5e9;
+    color: #4caf50;
+}
+
+.status-processing {
+    background: #e3f2fd;
+    color: #1565c0;
+}
+
+/* Dark mode status badges */
+body.dark .status-pending {
+    background: #332400;
+    color: #ff9800;
+}
+
+body.dark .status-approved {
+    background: #001f3f;
+    color: #2196f3;
+}
+
+body.dark .status-completed {
+    background: #002200;
+    color: #4caf50;
+}
+
+body.dark .status-cancelled {
+    background: #330000;
+    color: #f44336;
+}
+
+/* Responsive Grid */
+@media (max-width: 1024px) {
+    .grid-4 { grid-template-columns: repeat(3, 1fr); }
+}
+
+@media (max-width: 768px) {
+    .grid-3, .grid-4 { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 480px) {
+    .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+}

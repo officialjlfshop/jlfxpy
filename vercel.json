@@ -1,0 +1,15 @@
+{
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        { "key": "Access-Control-Allow-Origin", "value": "*" },
+        { "key": "Access-Control-Allow-Methods", "value": "GET,POST,OPTIONS" },
+        { "key": "Access-Control-Allow-Headers", "value": "Content-Type" }
+      ]
+    }
+  ],
+  "env": {
+    "GOOGLE_SHEETS_URL": "https://script.google.com/macros/s/AKfycbz_-CJ1gNYiT96m9-QTL5jSS1B7m1bmg6nH26EGuqA6-fBhPHWR3uq73yMtq65jVBA/exec"
+  }
+}

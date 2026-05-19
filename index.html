@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="description" content="JLF Fireworks - Premium pyrotechnics for unforgettable celebrations">
+    <meta name="theme-color" content="#e63946">
+    <title>JLF Fireworks | Premium Pyrotechnics</title>
+    
+    <!-- Preconnect for faster loading -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    
+    <!-- Fonts & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="css/main.css">
+    
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="JLF Fireworks">
+    <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+</head>
+<body>
+    <!-- Header with Hamburger Menu -->
+    <header class="header">
+        <div class="container">
+            <div class="header-inner">
+                <a href="/" class="logo">JLF<span class="logo-accent">Fireworks</span></a>
+                
+                <!-- Hamburger Button (Mobile) -->
+                <button class="hamburger" id="hamburgerBtn" aria-label="Menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                
+                <!-- Navigation Menu -->
+                <nav class="nav-menu" id="navMenu">
+                    <ul class="nav-links">
+                        <li><a href="#" data-page="home" class="nav-link active">Home</a></li>
+                        <li><a href="#" data-page="shop" class="nav-link">Shop</a></li>
+                        <li><a href="#" data-page="featured" class="nav-link">Rewards</a></li>
+                        <li><a href="#" data-page="orders" class="nav-link">Transactions</a></li>
+                        <li><a href="#" data-page="help" class="nav-link">Help</a></li>
+                    </ul>
+                    
+                    <!-- Action Icons moved inside nav for mobile -->
+                    <div class="nav-actions">
+                        <button class="icon-btn" id="searchBtn" aria-label="Search">
+                            <i class="fas fa-search"></i>
+                        </button>
+                        <button class="icon-btn" id="cartBtn" aria-label="Cart">
+                            <i class="fas fa-shopping-bag"></i>
+                            <span class="cart-badge" id="cartBadge">0</span>
+                        </button>
+                        <button class="icon-btn" id="notificationsBtn" aria-label="Notifications">
+                            <i class="fas fa-bell"></i>
+                            <span class="notification-badge" id="notificationBadge" style="display:none;"></span>
+                        </button>
+                        <button class="icon-btn" id="accountBtn" aria-label="Account">
+                            <i class="fas fa-user-circle"></i>
+                        </button>
+                    </div>
+                </nav>
+                
+                <!-- Top Bar Actions (Desktop) -->
+                <div class="top-actions">
+                    <button class="icon-btn balance-toggle" id="balanceToggleBtn" title="Hide/Show Balance">
+                        <i class="fas fa-eye" id="balanceToggleIcon"></i>
+                    </button>
+                    <div class="balance-display" id="balanceDisplay">
+                        <span class="balance-label">Balance</span>
+                        <span class="balance-amount" id="userBalance">₱0.00</span>
+                    </div>
+                    <button class="icon-btn" id="rechargeBtn">
+                        <i class="fas fa-wallet"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile Search Bar (hidden by default) -->
+        <div class="mobile-search" id="mobileSearch">
+            <div class="container">
+                <div class="search-wrapper">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="mobileSearchInput" placeholder="Search fireworks...">
+                    <button class="close-search" id="closeSearchBtn">&times;</button>
+                </div>
+                <div class="autocomplete-results" id="autocompleteResults"></div>
+            </div>
+        </div>
+    </header>
+    
+    <main id="main-content">
+        <!-- Dynamic pages will be loaded here -->
+        <div id="pageContainer"></div>
+    </main>
+    
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h3>JLF Fireworks</h3>
+                    <p>Quality Is Our Top Priority</p>
+                </div>
+                <div class="footer-links">
+                    <a href="#" data-page="help">Help Center</a>
+                    <a href="safety.html" target="_blank">Safety Guide</a>
+                    <a href="#" id="termsLink">Terms of Service</a>
+                    <a href="#" id="privacyLink">Privacy Policy</a>
+                </div>
+                <div class="footer-social">
+                    <a href="#" id="shareAppBtn"><i class="fab fa-facebook"></i></a>
+                    <a href="#" id="messengerBtn"><i class="fab fa-facebook-messenger"></i></a>
+                    <a href="mailto:jlfworks.official@gmail.com"><i class="fas fa-envelope"></i></a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 JLF Fireworks. All rights reserved.</p>
+                <p class="footer-phone"><i class="fas fa-phone"></i> 0963 386 3860</p>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Toast Container (Stackable) -->
+    <div class="toast-container" id="toastContainer"></div>
+    
+    <!-- Modal Container -->
+    <div id="modalContainer"></div>
+    
+    <!-- Scripts -->
+    <script src="js/config.js"></script>
+    <script src="js/helpers.js"></script>
+    <script src="js/state.js"></script>
+    
+    <!-- UI Components -->
+    <script src="js/ui/toast.js"></script>
+    <script src="js/ui/skeleton.js"></script>
+    <script src="js/ui/hamburger.js"></script>
+    <script src="js/ui/autocomplete.js"></script>
+    <script src="js/ui/balance-visibility.js"></script>
+    
+    <!-- Auth -->
+    <script src="js/auth/auth.js"></script>
+    <script src="js/auth/session.js"></script>
+    <script src="js/auth/pin.js"></script>
+    <script src="js/auth/two-factor.js"></script>
+    
+    <!-- Shop -->
+    <script src="js/data/products.js"></script>
+    <script src="js/data/images.js"></script>
+    <script src="js/shop/products.js"></script>
+    <script src="js/shop/quick-view.js"></script>
+    <script src="js/shop/related.js"></script>
+    <script src="js/shop/stock.js"></script>
+    <script src="js/shop/tags.js"></script>
+    
+    <!-- Cart & Checkout -->
+    <script src="js/cart/cart.js"></script>
+    <script src="js/cart/checkout.js"></script>
+    <script src="js/cart/delivery.js"></script>
+    
+    <!-- Transactions -->
+    <script src="js/transactions/balance.js"></script>
+    <script src="js/transactions/recharge.js"></script>
+    <script src="js/transactions/withdraw.js"></script>
+    <script src="js/transactions/pin-verify.js"></script>
+    <script src="js/transactions/two-factor-verify.js"></script>
+    
+    <!-- Investments -->
+    <script src="js/investments/bonds.js"></script>
+    <script src="js/investments/calculator.js"></script>
+    
+    <!-- Loyalty -->
+    <script src="js/loyalty/loyalty.js"></script>
+    <script src="js/loyalty/share-reward.js"></script>
+    
+    <!-- Reviews -->
+    <script src="js/reviews/reviews.js"></script>
+    
+    <!-- Notifications -->
+    <script src="js/notifications/push.js"></script>
+    
+    <!-- Main App -->
+    <script src="js/app.js"></script>
+</body>
+</html>
