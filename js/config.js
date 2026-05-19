@@ -1,12 +1,10 @@
 // ========================================
-// JLF FIREWORKS - CONFIGURATION for RENDER
+// JLF FIREWORKS - CONFIGURATION
 // ========================================
 
-// Use relative path for API (same domain)
-const GOOGLE_SHEETS_URL = "/api/sheets";
+window.GOOGLE_SHEETS_URL = "/api/sheets";
 
-// App Configuration
-const APP_CONFIG = {
+window.APP_CONFIG = {
     name: 'JLF Fireworks',
     version: '2.0.0',
     currency: '₱',
@@ -23,28 +21,21 @@ const APP_CONFIG = {
     investmentReturnRate: 0.05,
     investmentDurationDays: 180,
     freeDeliveryThreshold: 1999,
-    deliveryFee: 50,
-    shareReactionsRequired: 10,
-    shareRewardAmount: 5
+    deliveryFee: 50
 };
 
-let ADMIN_PHONE = "";
-let ADMIN_PASSWORD = "";
+window.ADMIN_PHONE = "";
+window.ADMIN_PASSWORD = "";
 
 async function loadAdminConfig() {
     try {
         const response = await fetch('/api/admin-config');
         const config = await response.json();
-        ADMIN_PHONE = config.adminPhone;
-        ADMIN_PASSWORD = config.adminPassword;
+        window.ADMIN_PHONE = config.adminPhone;
+        window.ADMIN_PASSWORD = config.adminPassword;
     } catch (error) {
         console.error('Failed to load admin config:', error);
     }
 }
 
 loadAdminConfig();
-
-window.GOOGLE_SHEETS_URL = GOOGLE_SHEETS_URL;
-window.APP_CONFIG = APP_CONFIG;
-window.ADMIN_PHONE = ADMIN_PHONE;
-window.ADMIN_PASSWORD = ADMIN_PASSWORD;

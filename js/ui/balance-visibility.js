@@ -2,33 +2,27 @@
 // BALANCE VISIBILITY - Privacy Toggle
 // ========================================
 
-let balanceVisible = true;
-
 function initBalanceVisibility() {
     const toggleBtn = document.getElementById('balanceToggleBtn');
     const toggleIcon = document.getElementById('balanceToggleIcon');
     
-    // Load preference from storage
-    const savedPreference = localStorage.getItem('jlf_balance_visible');
-    if (savedPreference !== null) {
-        balanceVisible = savedPreference === 'true';
+    if (!window.balanceVisible) {
+        applyBalanceVisibility();
     }
-    
-    // Apply initial state
-    applyBalanceVisibility();
     
     if (toggleBtn) {
         toggleBtn.addEventListener('click', () => {
-            balanceVisible = !balanceVisible;
-            localStorage.setItem('jlf_balance_visible', balanceVisible);
+            window.balanceVisible = !window.balanceVisible;
+            localStorage.setItem('jlf_balance_visible', window.balanceVisible);
             applyBalanceVisibility();
             
-            // Update icon
             if (toggleIcon) {
-                toggleIcon.className = balanceVisible ? 'fas fa-eye' : 'fas fa-eye-slash';
+                toggleIcon.className = window.balanceVisible ? 'fas fa-eye' : 'fas fa-eye-slash';
             }
             
-            showToast(balanceVisible ? 'Balance visible' : 'Balance hidden', 'info', 1500);
+            if (typeof showToast === 'function') {
+                showToast(window.balanceVisible ? 'Balance visible' : 'Balance hidden', 'info', 1500);
+            }
         });
     }
 }
@@ -37,7 +31,7 @@ function applyBalanceVisibility() {
     const balanceElements = document.querySelectorAll('.balance-amount, #userBalance, #profileBalance, #rechargeCurrentBalance, #withdrawCurrentBalance');
     
     balanceElements.forEach(element => {
-        if (balanceVisible) {
+        if (window.balanceVisible) {
             const originalBalance = element.getAttribute('data-original');
             if (originalBalance) {
                 element.textContent = originalBalance;
@@ -54,21 +48,5 @@ function applyBalanceVisibility() {
     });
 }
 
-function updateBalanceVisibilityWithValue(balance) {
-    const balanceElements = document.querySelectorAll('.balance-amount, #userBalance, #profileBalance, #rechargeCurrentBalance, #withdrawCurrentBalance');
-    
-    balanceElements.forEach(element => {
-        if (!balanceVisible) {
-            element.textContent = '•••••';
-            element.classList.add('blurred');
-        } else {
-            element.textContent = balance;
-            element.classList.remove('blurred');
-        }
-    });
-}
-
-// Export
 window.initBalanceVisibility = initBalanceVisibility;
 window.applyBalanceVisibility = applyBalanceVisibility;
-window.updateBalanceVisibilityWithValue = updateBalanceVisibilityWithValue;

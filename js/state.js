@@ -1,62 +1,52 @@
 // ========================================
-// GLOBAL STATE MANAGEMENT
+// GLOBAL STATE MANAGEMENT - SINGLE SOURCE OF TRUTH
 // ========================================
 
-// Global state variables
-let currentUser = null;
-let isAdmin = false;
-let cart = [];
-let currentPage = 'home';
-let products = [];
-let stockData = {};
-let activeSales = [];
-let announcements = [];
-let readAnnouncements = [];
-let investments = [];
-let balanceVisible = true;
-
-// Polling intervals
-let balanceInterval = null;
-let notificationInterval = null;
-
-// Session tracking
-let lastActivity = Date.now();
-let sessionTimeoutWarning = null;
+// Use window object to avoid duplicate declarations
+window.currentUser = window.currentUser || null;
+window.isAdmin = window.isAdmin || false;
+window.cart = window.cart || [];
+window.currentPage = window.currentPage || 'home';
+window.products = window.products || [];
+window.stockData = window.stockData || {};
+window.activeSales = window.activeSales || [];
+window.announcements = window.announcements || [];
+window.readAnnouncements = window.readAnnouncements || [];
+window.investments = window.investments || [];
+window.balanceVisible = window.balanceVisible !== undefined ? window.balanceVisible : true;
+window.balanceInterval = window.balanceInterval || null;
+window.notificationInterval = window.notificationInterval || null;
+window.lastActivity = window.lastActivity || Date.now();
+window.sessionTimeoutWarning = window.sessionTimeoutWarning || null;
 
 // Load state from localStorage
 function loadState() {
     try {
-        // Load user session
         const savedUser = localStorage.getItem('jlf_user');
         if (savedUser) {
-            currentUser = JSON.parse(savedUser);
+            window.currentUser = JSON.parse(savedUser);
         }
         
-        // Load admin flag
-        isAdmin = localStorage.getItem('jlf_admin') === 'true';
+        window.isAdmin = localStorage.getItem('jlf_admin') === 'true';
         
-        // Load cart
         const savedCart = localStorage.getItem('jlf_cart');
         if (savedCart) {
-            cart = JSON.parse(savedCart);
+            window.cart = JSON.parse(savedCart);
         }
         
-        // Load balance visibility preference
         const savedBalanceVisible = localStorage.getItem('jlf_balance_visible');
         if (savedBalanceVisible !== null) {
-            balanceVisible = savedBalanceVisible === 'true';
+            window.balanceVisible = savedBalanceVisible === 'true';
         }
         
-        // Load read announcements
         const savedReadAnnouncements = localStorage.getItem('jlf_read_announcements');
         if (savedReadAnnouncements) {
-            readAnnouncements = JSON.parse(savedReadAnnouncements);
+            window.readAnnouncements = JSON.parse(savedReadAnnouncements);
         }
         
-        // Load last activity
         const savedLastActivity = localStorage.getItem('jlf_last_activity');
         if (savedLastActivity) {
-            lastActivity = parseInt(savedLastActivity);
+            window.lastActivity = parseInt(savedLastActivity);
         }
         
         return true;
@@ -66,87 +56,57 @@ function loadState() {
     }
 }
 
-// Save state to localStorage
 function saveState() {
     try {
-        if (currentUser) {
-            localStorage.setItem('jlf_user', JSON.stringify(currentUser));
+        if (window.currentUser) {
+            localStorage.setItem('jlf_user', JSON.stringify(window.currentUser));
         }
-        localStorage.setItem('jlf_admin', isAdmin);
-        localStorage.setItem('jlf_cart', JSON.stringify(cart));
-        localStorage.setItem('jlf_balance_visible', balanceVisible);
-        localStorage.setItem('jlf_read_announcements', JSON.stringify(readAnnouncements));
-        localStorage.setItem('jlf_last_activity', lastActivity);
+        localStorage.setItem('jlf_admin', window.isAdmin);
+        localStorage.setItem('jlf_cart', JSON.stringify(window.cart));
+        localStorage.setItem('jlf_balance_visible', window.balanceVisible);
+        localStorage.setItem('jlf_read_announcements', JSON.stringify(window.readAnnouncements));
+        localStorage.setItem('jlf_last_activity', window.lastActivity);
     } catch (error) {
         console.error('Failed to save state:', error);
     }
 }
 
-// Clear all state (logout)
 function clearState() {
-    currentUser = null;
-    isAdmin = false;
-    cart = [];
-    balanceVisible = true;
-    lastActivity = Date.now();
+    window.currentUser = null;
+    window.isAdmin = false;
+    window.cart = [];
+    window.balanceVisible = true;
+    window.lastActivity = Date.now();
     
     localStorage.removeItem('jlf_user');
     localStorage.removeItem('jlf_admin');
     localStorage.removeItem('jlf_cart');
     localStorage.removeItem('jlf_last_activity');
-    // Keep balance visibility preference
-    // Keep read announcements
-    
-    // Stop polling
-    stopBalancePolling();
-    stopNotificationPolling();
 }
 
-// Update last activity (for session timeout)
 function updateLastActivity() {
-    lastActivity = Date.now();
-    localStorage.setItem('jlf_last_activity', lastActivity);
+    window.lastActivity = Date.now();
+    localStorage.setItem('jlf_last_activity', window.lastActivity);
 }
 
-// Check session timeout
 function checkSessionTimeout() {
-    const now = Date.now();
-    const timeSinceActivity = now - lastActivity;
+    if (!window.currentUser) return false;
     
-    if (timeSinceActivity >= APP_CONFIG.sessionTimeout) {
-        // Session expired
+    const now = Date.now();
+    const timeSinceActivity = now - window.lastActivity;
+    const sessionTimeout = window.APP_CONFIG ? window.APP_CONFIG.sessionTimeout : 604800000;
+    
+    if (timeSinceActivity >= sessionTimeout) {
         clearState();
-        showToast('Session expired. Please login again.', 'warning');
-        if (typeof openAuthModal === 'function') {
-            openAuthModal();
-        }
+        if (typeof showToast === 'function') showToast('Session expired. Please login again.', 'warning');
+        if (typeof switchPage === 'function') switchPage('account');
         return true;
     }
-    
-    // Show warning 10 minutes before expiry
-    const timeLeft = APP_CONFIG.sessionTimeout - timeSinceActivity;
-    if (timeLeft <= APP_CONFIG.sessionWarning && !sessionTimeoutWarning) {
-        sessionTimeoutWarning = setTimeout(() => {
-            showToast('Your session will expire soon. Please save your work.', 'warning', 10000);
-            sessionTimeoutWarning = null;
-        }, 1000);
-    }
-    
     return false;
 }
 
-// Start session monitoring
-function startSessionMonitoring() {
-    setInterval(() => {
-        if (currentUser) {
-            checkSessionTimeout();
-        }
-    }, 60000); // Check every minute
-}
-
-// Export for global use
 window.loadState = loadState;
 window.saveState = saveState;
 window.clearState = clearState;
 window.updateLastActivity = updateLastActivity;
-window.startSessionMonitoring = startSessionMonitoring;
+window.checkSessionTimeout = checkSessionTimeout;

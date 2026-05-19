@@ -2,11 +2,13 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JLF Fireworks</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>JLF Fireworks | Premium Pyrotechnics</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="/css/style.css">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#e63946">
 </head>
 <body>
     <header class="header">
@@ -14,7 +16,7 @@
             <div class="header-inner">
                 <a href="#" class="logo" onclick="switchPage('home'); return false;">JLF<span>Fireworks</span></a>
                 <button class="hamburger" id="hamburgerBtn">☰</button>
-                <nav class="nav-menu">
+                <nav class="nav-menu" id="navMenu">
                     <ul class="nav-links">
                         <li><a href="#" onclick="switchPage('home'); return false;" class="nav-link active">Home</a></li>
                         <li><a href="#" onclick="switchPage('shop'); return false;" class="nav-link">Shop</a></li>
@@ -24,15 +26,14 @@
                     </ul>
                 </nav>
                 <div class="nav-actions">
-                    <button class="icon-btn" id="rechargeBtn" onclick="switchPage('recharge')"><i class="fas fa-wallet"></i></button>
+                    <button class="icon-btn" id="rechargeBtn"><i class="fas fa-wallet"></i></button>
                     <button class="icon-btn" id="cartBtn"><i class="fas fa-shopping-bag"></i><span class="cart-badge">0</span></button>
-                    <button class="icon-btn" id="accountBtn" onclick="switchPage('account')"><i class="fas fa-user-circle"></i></button>
+                    <button class="icon-btn" id="accountBtn"><i class="fas fa-user-circle"></i></button>
                 </div>
             </div>
         </div>
     </header>
 
-    <!-- THIS DIV IS CRITICAL - Content loads here -->
     <main id="pageContainer">
         <div class="loading-spinner">Loading...</div>
     </main>
@@ -46,7 +47,7 @@
 
     <div id="toastContainer" class="toast-container"></div>
 
-    <!-- USE RELATIVE PATHS FOR ALL SCRIPTS -->
+    <!-- Load scripts in CORRECT ORDER with RELATIVE PATHS -->
     <script src="/js/config.js"></script>
     <script src="/js/helpers.js"></script>
     <script src="/js/state.js"></script>
@@ -69,7 +70,11 @@
     <script src="/js/auth/two-factor.js"></script>
     <script src="/js/shop/quick-view.js"></script>
     <script src="/js/reviews/reviews.js"></script>
+    <script src="/js/admin/admin.js"></script>
+    <script src="/js/admin/stats.js"></script>
+    <script src="/js/admin/charts.js"></script>
+    <script src="/js/admin/stock-control.js"></script>
+    <script src="/js/admin/sale-controller.js"></script>
     <script src="/js/app.js"></script>
-
 </body>
 </html>
